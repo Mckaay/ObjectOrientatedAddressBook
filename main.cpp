@@ -7,7 +7,6 @@ int main()
 {
     UserManager userManager("Users.txt");
 
-    userManager.registration();
     userManager.displayUsers();
 
     return 0;
