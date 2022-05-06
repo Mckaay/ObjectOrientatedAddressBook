@@ -28,7 +28,7 @@ public:
     };
     void displayWholeAdressBook();
     void addPersonToBook();
-
+    void searchByName();
 
 };
 

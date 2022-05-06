@@ -20,6 +20,7 @@ public:
     void logout();
     void displayWholeAddressBook();
     void addPersonToBook();
+    void searchByName();
 
 
 };
