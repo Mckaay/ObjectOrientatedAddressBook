@@ -9,5 +9,7 @@ int main()
 
     userManager.displayUsers();
 
+    userManager.loggingIn();
+
     return 0;
 }
