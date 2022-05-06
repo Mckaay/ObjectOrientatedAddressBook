@@ -34,3 +34,8 @@ void AddressBook::searchByName()
 {
     personManager.searchByName();
 }
+
+void AddressBook::searchBySurname()
+{
+    personManager.searchBySurname();
+}

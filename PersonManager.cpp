@@ -100,3 +100,26 @@ void PersonManager::searchByName ()
     }
     if(!exist) cout << "Niestety nie posiadasz kontaktu o podanym imieniu" << endl;
 }
+
+void PersonManager::searchBySurname ()
+{
+    bool exist = false;
+    string searchedSurname;
+
+    cout << "Podaj wyszukiwane nazwisko: " ;
+    cin >> searchedSurname;
+    cout << endl;
+
+    cout << "Wyniki dla wyszukiwanego nazwiska: " << endl;
+    cout <<"-----------------------------------------------" << endl;
+
+    for(auto it1 = persons.begin(); it1 != persons.end(); it1++)
+    {
+        if (searchedSurname == it1->getSurname())
+        {
+            exist = true;
+            printPersonData(*it1);
+        }
+    }
+    if(!exist) cout << "Niestety nie posiadasz kontaktu o podanym nazwisku" << endl;
+}

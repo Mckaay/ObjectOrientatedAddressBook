@@ -21,6 +21,7 @@ public:
     void displayWholeAddressBook();
     void addPersonToBook();
     void searchByName();
+    void searchBySurname();
 
 
 };
