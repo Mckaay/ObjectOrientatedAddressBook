@@ -24,3 +24,8 @@ void AddressBook::displayWholeAddressBook()
 {
     personManager.displayWholeAdressBook();
 }
+
+void AddressBook::addPersonToBook()
+{
+    personManager.addPersonToBook();
+}

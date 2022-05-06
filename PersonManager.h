@@ -9,6 +9,7 @@
 
 #include "Person.h"
 #include "PersonsTextFile.h"
+#include "Methods.h"
 
 using namespace std;
 
@@ -26,6 +27,7 @@ public:
         persons = personsTextFile.loadPersonDataFromTextFileToVector(LOGGEDIN_USER_ID);
     };
     void displayWholeAdressBook();
+    void addPersonToBook();
 
 
 };

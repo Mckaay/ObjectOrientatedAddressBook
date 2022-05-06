@@ -25,7 +25,8 @@ public:
         lastPersonId = 0;
     };
     vector<Person> loadPersonDataFromTextFileToVector(int loggedInUserID);
-
+    int getLastPersonId();
+    void savePersonToTextFile(Person person);
 
 
 };
