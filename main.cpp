@@ -9,7 +9,14 @@ int main()
 
     addressBook.displayWholeAddressBook();
 
+    system("cls");
+
     addressBook.searchByName();
+
+    system("pause");
+    system("cls");
+
+    addressBook.searchBySurname();
 
     return 0;
 }
