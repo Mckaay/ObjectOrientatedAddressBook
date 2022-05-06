@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    UserManager userManager;
+    UserManager userManager("Users.txt");
 
     userManager.registration();
     userManager.displayUsers();

@@ -8,6 +8,7 @@
 #include <windows.h>
 
 #include "User.h"
+#include "UsersTextFile.h"
 
 using namespace std;
 
@@ -16,16 +17,17 @@ class UserManager
 
     int loggedInUserId;
     vector <User> users;
-    bool checkIfUserAlreadyExists(string checkedUserLogin);
+    UsersTextFile usersTextFile;
 
+    bool checkIfUserAlreadyExists(string checkedUserLogin);
     int getNewUserId();
 
 public:
 
-    UserManager()
+    UserManager(string usersFileName): usersTextFile(usersFileName)
     {
         loggedInUserId = 0;
-    }
+    };
     void displayUsers();
     void registration();
 

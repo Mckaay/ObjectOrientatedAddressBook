@@ -45,6 +45,6 @@ void UserManager::registration()
     User user(getNewUserId(),login,password);
     users.push_back(user);
 
-    //saveUsersToTextFile(users);
+    usersTextFile.saveUsersToTextFile(users);
     cout << "Pomyslnie zarejestrowano uzytkownika!" << endl;
 }
