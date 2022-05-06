@@ -5,7 +5,7 @@ vector<Person> PersonsTextFile::loadPersonDataFromTextFileToVector(int loggedInU
     vector <Person> persons;
 
     fstream textFile;
-    textFile.open(PERSONS_TEXT_FILE_NAME,fstream::in);
+    textFile.open(getFileName(),fstream::in);
 
     string textLine;
     int startPosition;
@@ -52,7 +52,7 @@ int PersonsTextFile::getLastPersonId()
 void PersonsTextFile::savePersonToTextFile(Person person)
 {
     fstream textFile;
-    textFile.open(PERSONS_TEXT_FILE_NAME,fstream::app);
+    textFile.open(getFileName(),fstream::app);
 
     textFile << person.getId() <<"|" << person.getUserId() << "|" << person.getName() <<"|"<< person.getSurname() << "|" << person.getPhoneNumber() << "|";
     textFile << person.getEmailAdress() << "|" << person.getAdress() << "|" << endl;
@@ -65,7 +65,7 @@ void PersonsTextFile::savePersonToTextFile(Person person)
 void PersonsTextFile::rewriteTextFileAfterDeletion(int deletingId)
 {
     fstream personsTextFile;
-    personsTextFile.open(PERSONS_TEXT_FILE_NAME.c_str(),fstream::in);
+    personsTextFile.open(getFileName().c_str(),fstream::in);
 
     if (!personsTextFile.good())
     {
@@ -98,15 +98,15 @@ void PersonsTextFile::rewriteTextFileAfterDeletion(int deletingId)
         }
     }
     personsTextFile.close();
-    remove(PERSONS_TEXT_FILE_NAME.c_str());
+    remove(getFileName().c_str());
     temporaryTextFile.close();
-    rename("tymczasowy.txt",PERSONS_TEXT_FILE_NAME.c_str());
+    rename("tymczasowy.txt",getFileName().c_str());
 }
 
 void PersonsTextFile::rewriteTextFileAfterEdition(int editedID,Person person)
 {
     fstream personTextFile;
-    personTextFile.open(PERSONS_TEXT_FILE_NAME,fstream::in);
+    personTextFile.open(getFileName(),fstream::in);
 
     if (!personTextFile.good())
     {
@@ -142,7 +142,7 @@ void PersonsTextFile::rewriteTextFileAfterEdition(int editedID,Person person)
         }
     }
     personTextFile.close();
-    remove(PERSONS_TEXT_FILE_NAME.c_str());
+    remove(getFileName().c_str());
     temporaryTextFile.close();
-    rename("tymczasowy.txt",PERSONS_TEXT_FILE_NAME.c_str());
+    rename("tymczasowy.txt",getFileName().c_str());
 }

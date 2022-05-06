@@ -3,7 +3,7 @@
 void UsersTextFile::saveUsersToTextFile(vector<User> users)
 {
     fstream textFile;
-    textFile.open(USERS_FILE_NAME,fstream::out);
+    textFile.open(getFileName(),fstream::out);
 
     for(auto it1 = users.begin(); it1 != users.end(); it1++ )
     {
@@ -17,7 +17,7 @@ vector<User> UsersTextFile::loadUserDataFromTextFileToVector()
     vector<User> users;
 
     fstream textFile;
-    textFile.open(USERS_FILE_NAME,fstream::in);
+    textFile.open(getFileName(),fstream::in);
 
 
     string textFileLine;

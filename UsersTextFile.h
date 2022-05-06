@@ -8,15 +8,15 @@
 #include <string>
 
 #include "User.h"
+#include "textFile.h"
 
 using namespace std;
 
-class UsersTextFile
+class UsersTextFile: public TextFile
 {
-    const string USERS_FILE_NAME;
 
 public:
-    UsersTextFile(string fileName): USERS_FILE_NAME(fileName) {};
+    UsersTextFile(string fileName): TextFile(fileName) {};
     void saveUsersToTextFile(vector<User> users);
     vector<User> loadUserDataFromTextFileToVector();
 

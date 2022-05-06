@@ -11,16 +11,16 @@
 #include <cstdio>
 
 #include "Person.h"
+#include "textFile.h"
 
 using namespace std;
 
-class PersonsTextFile
+class PersonsTextFile: public TextFile
 {
-    const string PERSONS_TEXT_FILE_NAME;
     int lastPersonId;
 
 public:
-    PersonsTextFile(string personsTextFileName): PERSONS_TEXT_FILE_NAME(personsTextFileName)
+    PersonsTextFile(string personsTextFileName): TextFile(personsTextFileName)
     {
         lastPersonId = 0;
     };
