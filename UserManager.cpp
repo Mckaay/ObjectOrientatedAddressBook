@@ -117,7 +117,6 @@ void UserManager::changePassword()
 void UserManager::logout()
 {
     loggedInUserId = 0;
-    users.clear();
 }
 
 int UserManager::getLoggedinUserId()

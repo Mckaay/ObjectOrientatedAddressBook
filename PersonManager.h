@@ -34,6 +34,7 @@ public:
     void searchBySurname();
     void deletePerson();
     void editPersonData();
+    void cleanVector();
 
 };
 

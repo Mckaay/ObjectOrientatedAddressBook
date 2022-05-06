@@ -23,6 +23,7 @@ public:
         delete personManager;
         personManager = NULL;
     }
+    int getLoggedInUserId();
     void registration();
     void loggingIn();
     void changePassword();
@@ -33,6 +34,8 @@ public:
     void searchBySurname();
     void deletePerson();
     void editPerson();
+    char mainMenu();
+    void personMenu();
 };
 
 

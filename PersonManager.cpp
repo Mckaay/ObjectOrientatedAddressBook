@@ -250,3 +250,8 @@ void PersonManager::editPersonData()
         Methods::pauseProgram();
     }
 }
+
+void PersonManager::cleanVector()
+{
+    persons.clear();
+}
