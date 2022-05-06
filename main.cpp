@@ -11,5 +11,9 @@ int main()
 
     userManager.loggingIn();
 
+    userManager.logout();
+
+    userManager.displayUsers();
+
     return 0;
 }

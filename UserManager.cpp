@@ -11,6 +11,8 @@ bool UserManager::checkIfUserAlreadyExists(string checkedUserLogin)
 
 void UserManager::displayUsers()
 {
+    if(users.empty()) cout << "Nie ma uzytkownikow" << endl;
+
     for(auto it1 = users.begin(); it1 != users.end() ; it1++ )
     {
         cout << it1->getId() << endl;
@@ -83,6 +85,7 @@ void UserManager::loggingIn()
             {
                 cout << "Pomyslnie zalogowano." << endl;
                 loggedInUserId = number;
+                return ;
             }
             else
             {
@@ -92,3 +95,28 @@ void UserManager::loggingIn()
     }
     else cout << "Nie ma takiego uzytkownika!" << endl;
 }
+
+void UserManager::changePassword()
+{
+    string newPassword;
+
+    cout << "Podaj nowe haslo: ";
+    cin >> newPassword;
+
+    for(auto it1 = users.begin(); it1 != users.end(); it1++ )
+    {
+        if (it1 -> getId() == loggedInUserId)
+        {
+            it1 -> setPassword(newPassword);
+            cout << "Haslo zostalo zmienione pomyslnie." << endl;
+        }
+    }
+    usersTextFile.saveUsersToTextFile(users);
+}
+
+void UserManager::logout()
+{
+    loggedInUserId = 0;
+    users.clear();
+}
+
