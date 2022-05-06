@@ -39,3 +39,8 @@ void AddressBook::searchBySurname()
 {
     personManager.searchBySurname();
 }
+
+void AddressBook::deletePerson()
+{
+    personManager.deletePerson();
+}

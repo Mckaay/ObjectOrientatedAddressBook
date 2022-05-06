@@ -22,6 +22,7 @@ public:
     void addPersonToBook();
     void searchByName();
     void searchBySurname();
+    void deletePerson();
 
 
 };
