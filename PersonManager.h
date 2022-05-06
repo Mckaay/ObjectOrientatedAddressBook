@@ -21,6 +21,7 @@ class PersonManager
 
     void printPersonData(Person person);
     bool checkIfPersonExistsInAdressBook(int checkedID);
+    void displayEditMenu();
 
 public:
     PersonManager(string textFileName,int loggedInUserId): personsTextFile(textFileName),LOGGEDIN_USER_ID(loggedInUserId)
@@ -32,6 +33,7 @@ public:
     void searchByName();
     void searchBySurname();
     void deletePerson();
+    void editPersonData();
 
 };
 

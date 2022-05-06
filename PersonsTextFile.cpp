@@ -65,7 +65,7 @@ void PersonsTextFile::savePersonToTextFile(Person person)
 void PersonsTextFile::rewriteTextFileAfterDeletion(int deletingId)
 {
     fstream personsTextFile;
-    personsTextFile.open(PERSONS_TEXT_FILE_NAME,fstream::in);
+    personsTextFile.open(PERSONS_TEXT_FILE_NAME.c_str(),fstream::in);
 
     if (!personsTextFile.good())
     {
@@ -98,6 +98,50 @@ void PersonsTextFile::rewriteTextFileAfterDeletion(int deletingId)
         }
     }
     personsTextFile.close();
+    remove(PERSONS_TEXT_FILE_NAME.c_str());
+    temporaryTextFile.close();
+    rename("tymczasowy.txt",PERSONS_TEXT_FILE_NAME.c_str());
+}
+
+void PersonsTextFile::rewriteTextFileAfterEdition(int editedID,Person person)
+{
+    fstream personTextFile;
+    personTextFile.open(PERSONS_TEXT_FILE_NAME,fstream::in);
+
+    if (!personTextFile.good())
+    {
+        cout << "Problem z plikiem ksiazka adresowa!";
+        exit(0);
+    }
+
+    fstream temporaryTextFile;
+    temporaryTextFile.open("tymczasowy.txt",fstream::out);
+
+    if (!temporaryTextFile.good())
+    {
+        cout << "Problem z tymczasoym plikiem!";
+        exit(0);
+    }
+
+    string textFileLine;
+    int startPosition;
+    int currentPersonID;
+
+    while(getline(personTextFile,textFileLine))
+    {
+        startPosition = 0;
+        currentPersonID = stoi(textFileLine.substr(startPosition,textFileLine.find("|",startPosition) - startPosition));
+        if(currentPersonID == editedID)
+        {
+            temporaryTextFile << person.getId() << "|" << person.getUserId() <<"|"<< person.getName() <<"|"<< person.getSurname() << "|" << person.getPhoneNumber() << "|";
+            temporaryTextFile << person.getEmailAdress() << "|" << person.getAdress() << "|" << endl;
+        }
+        else
+        {
+            temporaryTextFile << textFileLine << endl;
+        }
+    }
+    personTextFile.close();
     remove(PERSONS_TEXT_FILE_NAME.c_str());
     temporaryTextFile.close();
     rename("tymczasowy.txt",PERSONS_TEXT_FILE_NAME.c_str());

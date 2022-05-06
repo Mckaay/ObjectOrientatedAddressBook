@@ -28,7 +28,7 @@ public:
     int getLastPersonId();
     void savePersonToTextFile(Person person);
     void rewriteTextFileAfterDeletion(int deletingId);
-
+    void rewriteTextFileAfterEdition(int editedID,Person person);
 };
 
 #endif

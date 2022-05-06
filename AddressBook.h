@@ -23,8 +23,7 @@ public:
     void searchByName();
     void searchBySurname();
     void deletePerson();
-
-
+    void editPerson();
 };
 
 

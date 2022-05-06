@@ -12,13 +12,11 @@ int main()
     system("pause");
     system("cls");
 
-    addressBook.deletePerson();
+    addressBook.editPerson();
 
     system("pause");
     system("cls");
 
-    addressBook.addPersonToBook();
-    addressBook.displayWholeAddressBook();
 
     return 0;
 }
