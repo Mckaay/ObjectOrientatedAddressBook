@@ -27,6 +27,7 @@ public:
     UserManager(string usersFileName): usersTextFile(usersFileName)
     {
         loggedInUserId = 0;
+        users = usersTextFile.loadUserDataFromTextFileToVector();
     };
     void displayUsers();
     void registration();
