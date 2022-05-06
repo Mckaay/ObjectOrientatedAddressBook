@@ -48,3 +48,47 @@ void UserManager::registration()
     usersTextFile.saveUsersToTextFile(users);
     cout << "Pomyslnie zarejestrowano uzytkownika!" << endl;
 }
+
+int UserManager::checkIfCorrectPassword(string login, string password)
+{
+    for(auto it1 = users.begin() ; it1 != users.end(); it1++)
+    {
+        if(it1->login == login)
+        {
+            if(it1->password == password) return it1->ID;
+            else return 0;
+        }
+    }
+    return 0;
+}
+
+void UserManager::loggingIn()
+{
+    string login;
+    string password;
+
+    cout << "Podaj login: ";
+    cin >> login;
+
+    int number;
+
+    if(checkIfUserAlreadyExists(login))
+    {
+        for(int i = 0 ; i < 3 ; i++)
+        {
+            cout << "Podaj haslo: ";
+            cin >> password;
+            number = checkIfCorrectPassword(login,password);
+            if(number)
+            {
+                cout << "Pomyslnie zalogowano." << endl;
+                loggedInUserId = number;
+            }
+            else
+            {
+                cout << "Zle haslo. Pozostalo ci " << 2 - i << " proby. " << endl;
+            }
+        }
+    }
+    else cout << "Nie ma takiego uzytkownika!" << endl;
+}

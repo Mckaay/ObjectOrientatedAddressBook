@@ -21,6 +21,7 @@ class UserManager
 
     bool checkIfUserAlreadyExists(string checkedUserLogin);
     int getNewUserId();
+    int checkIfCorrectPassword(string login,string password);
 
 public:
 
@@ -31,7 +32,7 @@ public:
     };
     void displayUsers();
     void registration();
-
+    void loggingIn();
 
 };
 
