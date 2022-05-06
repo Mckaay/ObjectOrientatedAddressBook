@@ -17,6 +17,17 @@ using namespace std;
 class PersonsTextFile
 {
     const string PERSONS_TEXT_FILE_NAME;
+    int lastPersonId;
+
+public:
+    PersonsTextFile(string personsTextFileName): PERSONS_TEXT_FILE_NAME(personsTextFileName)
+    {
+        lastPersonId = 0;
+    };
+    vector<Person> loadPersonDataFromTextFileToVector(int loggedInUserID);
+
 
 
 };
+
+#endif

@@ -1,10 +1,14 @@
 #include <iostream>
-#include "UserManager.h"
+#include "AddressBook.h"
 
 using namespace std;
 
 int main()
 {
+    AddressBook addressBook("Users.txt","Persons.txt");
+
+    addressBook.displayWholeAddressBook();
+
 
     return 0;
 }
