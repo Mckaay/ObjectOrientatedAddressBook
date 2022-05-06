@@ -43,3 +43,21 @@ vector<Person> PersonsTextFile::loadPersonDataFromTextFileToVector(int loggedInU
     textFile.close();
     return persons;
 }
+
+int PersonsTextFile::getLastPersonId()
+{
+    return this->lastPersonId;
+}
+
+void PersonsTextFile::savePersonToTextFile(Person person)
+{
+    fstream textFile;
+    textFile.open(PERSONS_TEXT_FILE_NAME,fstream::app);
+
+    textFile << person.getId() <<"|" << person.getUserId() << "|" << person.getName() <<"|"<< person.getSurname() << "|" << person.getPhoneNumber() << "|";
+    textFile << person.getEmailAdress() << "|" << person.getAdress() << "|" << endl;
+
+    textFile.close();
+
+    lastPersonId++;
+}

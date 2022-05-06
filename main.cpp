@@ -9,6 +9,9 @@ int main()
 
     addressBook.displayWholeAddressBook();
 
+    addressBook.addPersonToBook();
+
+    addressBook.displayWholeAddressBook();
 
     return 0;
 }

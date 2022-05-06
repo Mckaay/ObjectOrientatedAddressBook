@@ -24,3 +24,56 @@ void PersonManager::displayWholeAdressBook()
         }
     }
 }
+
+void PersonManager::addPersonToBook()
+{
+    Person person;
+    person.setUserId(LOGGEDIN_USER_ID);
+    person.setID(personsTextFile.getLastPersonId());
+
+    cout << "DODAWANIE NOWEGO ADRESATA" << endl;
+
+    cout << "PODAJ IMIE: ";
+    person.setName(Methods::loadLine());
+
+    while(!Methods::isNameOrSurnameValid(person.getName()))
+    {
+        cout<<"Niepoprawne imie " << endl;
+        cout<< "Podaj imie ponownie: ";
+        person.setName(Methods::loadLine());
+    }
+    person.setName(Methods::changeFirstLetterToUpperCaseRestToLowerCase(person.getName()));
+
+    cout << "PODAJ NAZWISKO: ";
+    person.setSurname(Methods::loadLine());
+
+    while(!Methods::isNameOrSurnameValid(person.getSurname()))
+    {
+        cout<<"Niepoprawne nazwisko " << endl;
+        cout<< "Podaj nazwisko ponownie: ";
+        person.setSurname(Methods::loadLine());
+    }
+    person.setSurname(Methods::changeFirstLetterToUpperCaseRestToLowerCase(person.getSurname()));
+
+    cout << "PODAJ NUMER TELEFONU: ";
+    person.setPhoneNumber(Methods::loadLine());
+
+
+    cout << "PODAJ ADRES EMAIL: " ;
+    person.setEmailAdress(Methods::loadLine());
+
+    while(!Methods::isEmailAdressValid(person.getEmailAdress()))
+    {
+        cout<<"Niepoprawnie wpisany adres email. Przyklad: jan.kowalski@wp.pl" <<endl;
+        cout<<"Podaj adres email ponownie: ";
+        person.setEmailAdress(Methods::loadLine());
+    }
+
+    cout << "PODAJ ADRES: ";
+    person.setAdress(Methods::loadLine());
+
+    persons.push_back(person);
+    personsTextFile.savePersonToTextFile(person);
+
+    cout << "Dodawanie przebieglo pomyslnie" << endl;
+}
