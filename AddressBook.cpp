@@ -8,6 +8,10 @@ void AddressBook::registration()
 void AddressBook::loggingIn()
 {
     userManager.loggingIn();
+    if(userManager.getLoggedinUserId())
+    {
+        personManager = new PersonManager(PERSONS_TEXT_FILE_NAME,userManager.getLoggedinUserId());
+    }
 }
 
 void AddressBook::changePassword()
@@ -22,30 +26,31 @@ void AddressBook::logout()
 
 void AddressBook::displayWholeAddressBook()
 {
-    personManager.displayWholeAdressBook();
+    personManager->displayWholeAdressBook();
 }
 
 void AddressBook::addPersonToBook()
 {
-    personManager.addPersonToBook();
+    personManager->addPersonToBook();
 }
 
 void AddressBook::searchByName()
 {
-    personManager.searchByName();
+    personManager->searchByName();
 }
 
 void AddressBook::searchBySurname()
 {
-    personManager.searchBySurname();
+    personManager->searchBySurname();
 }
 
 void AddressBook::deletePerson()
 {
-    personManager.deletePerson();
+    personManager->deletePerson();
 }
 
 void AddressBook::editPerson()
 {
-    personManager.editPersonData();
+    personManager->editPersonData();
 }
+

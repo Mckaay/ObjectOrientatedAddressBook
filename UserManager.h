@@ -30,6 +30,7 @@ public:
         loggedInUserId = 0;
         users = usersTextFile.loadUserDataFromTextFileToVector();
     };
+    int getLoggedinUserId();
     void displayUsers();
     void registration();
     void loggingIn();

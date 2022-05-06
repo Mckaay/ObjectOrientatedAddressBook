@@ -7,16 +7,8 @@ int main()
 {
     AddressBook addressBook("Users.txt","Persons.txt");
 
+    addressBook.loggingIn();
+
     addressBook.displayWholeAddressBook();
-
-    system("pause");
-    system("cls");
-
-    addressBook.editPerson();
-
-    system("pause");
-    system("cls");
-
-
     return 0;
 }

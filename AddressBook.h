@@ -9,11 +9,20 @@ using namespace std;
 class AddressBook
 {
     UserManager userManager;
-    PersonManager personManager;
+    PersonManager* personManager;
+    const string PERSONS_TEXT_FILE_NAME;
 
 
 public:
-    AddressBook(string usersFileName,string personsFileName): userManager(usersFileName), personManager(personsFileName,1){};
+    AddressBook(string usersFileName,string personsFileName): userManager(usersFileName), PERSONS_TEXT_FILE_NAME(personsFileName)
+    {
+        personManager = NULL;
+    };
+    ~AddressBook()
+    {
+        delete personManager;
+        personManager = NULL;
+    }
     void registration();
     void loggingIn();
     void changePassword();

@@ -120,3 +120,8 @@ void UserManager::logout()
     users.clear();
 }
 
+int UserManager::getLoggedinUserId()
+{
+    return this->loggedInUserId;
+}
+
