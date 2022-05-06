@@ -29,7 +29,7 @@ void PersonManager::addPersonToBook()
 {
     Person person;
     person.setUserId(LOGGEDIN_USER_ID);
-    person.setID(personsTextFile.getLastPersonId());
+    person.setID(personsTextFile.getLastPersonId()+1);
 
     cout << "DODAWANIE NOWEGO ADRESATA" << endl;
 
@@ -122,4 +122,53 @@ void PersonManager::searchBySurname ()
         }
     }
     if(!exist) cout << "Niestety nie posiadasz kontaktu o podanym nazwisku" << endl;
+}
+
+bool PersonManager::checkIfPersonExistsInAdressBook(int checkedID)
+{
+    for(auto it1 = persons.begin(); it1 != persons.end(); it1++ )
+    {
+        if (it1 -> getId() == checkedID)  return true;
+    }
+    return false;
+}
+
+void PersonManager::deletePerson()
+{
+    int personID;
+    char prove;
+    char repeat;
+
+    cout << "Podaj ID osoby do usuniecia: " << endl;
+    cin >> personID;
+    if(checkIfPersonExistsInAdressBook(personID))
+    {
+        for(auto it1 = persons.begin(); it1 <= persons.end(); it1++)
+        {
+            if (it1 -> getId() == personID)
+            {
+                cout<<"Czy na pewno usunac osobe z ksiazki adresowej t/n: ";
+                cin>> prove;
+
+                if(prove == 't')
+                {
+                    persons.erase(it1);
+                    cout<<"Osoba zostala pomyslnie usunieta z ksiazki adresowej!" << endl;
+
+                    personsTextFile.rewriteTextFileAfterDeletion(personID);
+                    break;
+                }
+                else  break;
+            }
+        }
+    }
+    else
+    {
+        cout << "Nie ma osoby o podanym ID w ksiazce adresowej" << endl;
+        cout << "Wybierz m jesli chcesz powrocic do menu, d jesli chcesz sprobowac ponownie: " << endl;
+        cin >> repeat;
+
+        if(repeat == 'm') cout << "Powrot do MENU" << endl;
+        else deletePerson();
+    }
 }

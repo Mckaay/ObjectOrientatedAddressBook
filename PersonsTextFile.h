@@ -27,7 +27,7 @@ public:
     vector<Person> loadPersonDataFromTextFileToVector(int loggedInUserID);
     int getLastPersonId();
     void savePersonToTextFile(Person person);
-
+    void rewriteTextFileAfterDeletion(int deletingId);
 
 };
 

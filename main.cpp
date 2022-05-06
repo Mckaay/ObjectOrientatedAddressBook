@@ -9,14 +9,16 @@ int main()
 
     addressBook.displayWholeAddressBook();
 
+    system("pause");
     system("cls");
 
-    addressBook.searchByName();
+    addressBook.deletePerson();
 
     system("pause");
     system("cls");
 
-    addressBook.searchBySurname();
+    addressBook.addPersonToBook();
+    addressBook.displayWholeAddressBook();
 
     return 0;
 }
