@@ -8,15 +8,24 @@
 #include <windows.h>
 
 #include "Person.h"
+#include "PersonsTextFile.h"
 
 using namespace std;
 
 class PersonManager
 {
-    const string LOGGEDIN_USER_ID;
+    const int LOGGEDIN_USER_ID;
     vector <Person> persons;
+    PersonsTextFile personsTextFile;
 
+    void printPersonData(Person person);
 
+public:
+    PersonManager(string textFileName,int loggedInUserId): personsTextFile(textFileName),LOGGEDIN_USER_ID(loggedInUserId)
+    {
+        persons = personsTextFile.loadPersonDataFromTextFileToVector(LOGGEDIN_USER_ID);
+    };
+    void displayWholeAdressBook();
 
 
 };

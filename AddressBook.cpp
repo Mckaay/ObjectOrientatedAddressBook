@@ -19,3 +19,8 @@ void AddressBook::logout()
 {
     userManager.logout();
 }
+
+void AddressBook::displayWholeAddressBook()
+{
+    personManager.displayWholeAdressBook();
+}
