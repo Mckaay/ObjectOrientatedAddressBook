@@ -44,3 +44,8 @@ void AddressBook::deletePerson()
 {
     personManager.deletePerson();
 }
+
+void AddressBook::editPerson()
+{
+    personManager.editPersonData();
+}

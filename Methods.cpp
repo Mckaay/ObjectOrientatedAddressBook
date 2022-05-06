@@ -52,3 +52,10 @@ bool Methods::isEmailAdressValid(string emailAdress)
     return true;
 }
 
+void Methods::pauseProgram()
+{
+    cout << "Nacisnij dowolny przycisk by powrocic do Menu Glownego" << endl;
+    getch();
+    system("cls");
+}
+

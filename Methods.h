@@ -18,6 +18,7 @@ public:
     static bool isEmailAdressValid(string emailAdress);
     static string loadLine();
     static bool isChar(char c);
+    static void pauseProgram();
 
 
 

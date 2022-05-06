@@ -172,3 +172,81 @@ void PersonManager::deletePerson()
         else deletePerson();
     }
 }
+
+void PersonManager::displayEditMenu()
+{
+    cout << endl << "   >>> MENU  EDYCJA <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Ktore dane zaktualizowac: " << endl;
+    cout << "1 - Imie" << endl;
+    cout << "2 - Nazwisko" << endl;
+    cout << "3 - Numer telefonu" << endl;
+    cout << "4 - Email" << endl;
+    cout << "5 - Adres" << endl;
+    cout << "6 - Powrot " << endl;
+}
+
+void PersonManager::editPersonData()
+{
+    int editingPersonID;
+    int userChoice;
+    string editedData;
+
+    cout << "Wprowadz ID adresata ktorego chcesz edytowac " << endl;
+    cin >> editingPersonID;
+
+    if(checkIfPersonExistsInAdressBook(editingPersonID))
+    {
+        displayEditMenu();
+
+        cin >> userChoice;
+        cin.sync();
+
+        if(userChoice < 6)
+        {
+            for(auto it1 = persons.begin(); it1 != persons.end(); it1++)
+            {
+                if (it1 -> getId() == editingPersonID)
+                {
+                    switch(userChoice)
+                    {
+                    case 1:
+                        cout << "Wprowadz nowe imie: ";
+                        it1 -> setName(Methods::loadLine());
+                        break;
+                    case 2:
+                        cout << "Wprowadz nowe nazwisko: ";
+                        it1 -> setSurname(Methods::loadLine());
+                        break;
+                    case 3:
+                        cout << "Wprowadz nowy numer telefonu: ";
+                        it1 -> setPhoneNumber(Methods::loadLine());
+                        break;
+                    case 4:
+                        cout << "Wprowadz nowy adres email: ";
+                        it1 -> setEmailAdress(Methods::loadLine());
+                        break;
+                    case 5:
+                        cout << "Wprowadz nowy adres: ";
+                        it1 -> setAdress(Methods::loadLine());
+                        break;
+                    default:
+                        break;
+                    }
+                    personsTextFile.rewriteTextFileAfterEdition(editingPersonID,*it1);
+
+                    cout<<"Kontakt po edycji: "<<endl;
+                    cout <<"-----------------------------------------------" << endl;
+
+                    printPersonData(*it1);
+                    Methods::pauseProgram();
+                }
+            }
+        }
+    }
+    else
+    {
+        cout << "Nie ma osoby o podanym ID w ksiazce adresowej" << endl;
+        Methods::pauseProgram();
+    }
+}
