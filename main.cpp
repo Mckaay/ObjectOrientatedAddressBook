@@ -9,9 +9,7 @@ int main()
 
     addressBook.displayWholeAddressBook();
 
-    addressBook.addPersonToBook();
-
-    addressBook.displayWholeAddressBook();
+    addressBook.searchByName();
 
     return 0;
 }

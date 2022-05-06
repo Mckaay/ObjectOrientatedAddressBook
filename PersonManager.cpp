@@ -77,3 +77,26 @@ void PersonManager::addPersonToBook()
 
     cout << "Dodawanie przebieglo pomyslnie" << endl;
 }
+
+void PersonManager::searchByName ()
+{
+    bool exist = false;
+    string searchedName;
+
+    cout << "Podaj wyszukiwane imie: " ;
+    cin >> searchedName;
+    cout << endl;
+
+    cout << "Wyniki dla wyszukiwanego imienia: " << endl;
+    cout <<"-----------------------------------------------" << endl;
+
+    for(auto it1 = persons.begin(); it1 != persons.end(); it1++)
+    {
+        if (searchedName == it1->getName())
+        {
+            exist = true;
+            printPersonData(*it1);
+        }
+    }
+    if(!exist) cout << "Niestety nie posiadasz kontaktu o podanym imieniu" << endl;
+}

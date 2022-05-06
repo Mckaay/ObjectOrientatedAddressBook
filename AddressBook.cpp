@@ -29,3 +29,8 @@ void AddressBook::addPersonToBook()
 {
     personManager.addPersonToBook();
 }
+
+void AddressBook::searchByName()
+{
+    personManager.searchByName();
+}
